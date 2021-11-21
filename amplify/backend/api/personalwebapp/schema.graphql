@@ -1,0 +1,37 @@
+type Image @model {
+  id: ID!
+  url: String!
+  description: String
+}
+
+union SectionContentType = PortfolioItem | BulletItem | ContentItem
+type Section @model {
+  id: ID!
+  tag: String
+  title: String
+  content: [SectionContentType]
+}
+
+type PortfolioItem @model {
+  id: ID!
+  title: String
+  headingImage: Image
+  content: [ContentType]
+}
+
+enum ContentType {
+  TEXT
+  IMAGE
+}
+
+type ContentItem @model {
+  id: ID!
+  type: ContentType
+  data: String
+  isLink: Boolean
+}
+
+type BulletItem @model {
+  id: ID!
+  items: [ContentItem]
+}

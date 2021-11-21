@@ -1,0 +1,66 @@
+.wrapper {
+  margin: auto;
+  position: relative;
+  width: 30rem;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+  padding: 6rem 0px;
+  background-color: aqua;
+}
+
+.login_form {
+  button {
+    display: block;
+  }
+  input {
+    padding: 0.25rem;
+    margin: 0.3rem;
+    width: 15rem;
+    border: none;
+    height: 2rem;
+  }
+  input:focus {
+    outline: none;
+  }
+  label {
+    display: block;
+  }
+  div {
+    display: inline-block;
+    text-align: left;
+  }
+}
+
+.login_header {
+  .header {
+    position: relative;
+  }
+  h2 {
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    text-decoration: underline;
+    width: fit-content;
+  }
+  h2:hover {
+    cursor: pointer;
+  }
+  h2:hover + svg {
+    visibility: visible;
+  }
+  svg {
+    margin: 0rem 0rem 0rem 0.4rem;
+    position: absolute;
+    left: 17.5rem;
+    top: 0.8rem;
+    visibility: hidden;
+  }
+}
+
+.popover {
+  background-color: rgba(255, 255, 255, 0.678);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+}

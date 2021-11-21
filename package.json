@@ -9,9 +9,20 @@
     "leggo": "next lint && next start"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@hookform/resolvers": "^2.8.3",
+    "aws-amplify": "^4.3.8",
     "next": "12.0.4",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-draggable": "^4.4.4",
+    "react-hook-form": "^7.20.2",
+    "react-tiny-popover": "^7.0.1",
+    "sass": "^1.43.4",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "16.11.7",

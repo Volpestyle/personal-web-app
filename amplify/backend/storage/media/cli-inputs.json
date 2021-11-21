@@ -1,0 +1,16 @@
+{
+  "resourceName": "media",
+  "policyUUID": "e8d8dfae",
+  "bucketName": "mediaresources",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
