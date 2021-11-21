@@ -1,21 +1,27 @@
 {
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-personalwebapp-dev-181200-authRole",
-      "UnauthRoleArn": "arn:aws:iam::842434829012:role/amplify-personalwebapp-dev-181200-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::842434829012:role/amplify-personalwebapp-dev-181200-authRole",
-      "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-personalwebapp-dev-181200-deployment",
-      "UnauthRoleName": "amplify-personalwebapp-dev-181200-unauthRole",
-      "StackName": "amplify-personalwebapp-dev-181200",
-      "StackId": "arn:aws:cloudformation:us-east-2:842434829012:stack/amplify-personalwebapp-dev-181200/ec4d2fb0-4814-11ec-9c4f-0a9b07b18280",
-      "AmplifyAppId": "dpy3iqfkgh8ej"
-    },
-    "categories": {
-      "auth": {
-        "personalwebapp12ae09d2": {},
-        "true": {}
-      }
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-personalwebapp-dev-181200-authRole",
+            "UnauthRoleArn": "arn:aws:iam::842434829012:role/amplify-personalwebapp-dev-181200-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::842434829012:role/amplify-personalwebapp-dev-181200-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-personalwebapp-dev-181200-deployment",
+            "UnauthRoleName": "amplify-personalwebapp-dev-181200-unauthRole",
+            "StackName": "amplify-personalwebapp-dev-181200",
+            "StackId": "arn:aws:cloudformation:us-east-2:842434829012:stack/amplify-personalwebapp-dev-181200/ec4d2fb0-4814-11ec-9c4f-0a9b07b18280",
+            "AmplifyAppId": "dpy3iqfkgh8ej"
+        },
+        "categories": {
+            "auth": {
+                "personalwebapp12ae09d2": {},
+                "true": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "dpy3iqfkgh8ej",
+                    "type": "cicd"
+                }
+            }
+        }
     }
-  }
 }
