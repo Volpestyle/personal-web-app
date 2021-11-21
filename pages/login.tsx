@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Login.module.scss";
 import { Popover, ArrowContainer } from "react-tiny-popover";
 import React, { useEffect, useState } from "react";
@@ -9,13 +8,14 @@ import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { Auth } from "aws-amplify";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
-import { useRouter } from "next/router";
+import { useToasts } from "react-toast-notifications";
+import router from "next/router";
 //https://github.com/react-hook-form/resolvers/issues/271
 const { yupResolver } = require("@hookform/resolvers/yup");
 
 const Login: NextPage = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-  const router = useRouter();
+  const { addToast } = useToasts();
 
   const makeVisibleHandler = () => {
     document.querySelector("svg")!.style.visibility = "visible";
@@ -50,10 +50,14 @@ const Login: NextPage = () => {
     console.log(`LOGGING IN: ${email}, ${password}`);
     try {
       const user = await Auth.signIn(email, password);
-      router.push("/");
-      console.log("Log in success");
+      router.push("/cms/dashboard");
+      addToast("Logged in successfully", {
+        appearance: "success",
+        autoDismiss: true,
+      });
     } catch (error) {
       console.error("Error signing in:", error);
+      addToast("Failed to log-in", { appearance: "error", autoDismiss: true });
     }
   };
 
