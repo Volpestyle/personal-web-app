@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next lint && next build && next export",
+    "build": "amplifyPush --simple && next build",
     "start": "next start",
     "lint": "next lint",
     "leggo": "next lint && next start"
