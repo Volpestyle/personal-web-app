@@ -27,9 +27,14 @@ export const Button = ({ children, onClick, icon }: ButtonProps) => {
       iterations: 1,
       easing: "ease-out",
     });
+    circle.animate([{ opacity: "100%" }, { opacity: "0%" }], {
+      duration: 300,
+      iterations: 1,
+      easing: "ease-in",
+    });
     setTimeout(() => {
       circle.remove();
-    }, 500);
+    }, 600);
   };
 
   return (

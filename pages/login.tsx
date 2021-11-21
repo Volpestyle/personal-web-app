@@ -4,24 +4,36 @@ import styles from "../styles/Login.module.scss";
 import { Popover, ArrowContainer } from "react-tiny-popover";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheckCircle,
+  faHeartBroken,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { Auth } from "aws-amplify";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { useToasts } from "react-toast-notifications";
 import router from "next/router";
+import Image from "next/image";
+import { apiStatuses } from "../utils/enums";
+import { CHSpinner } from "../components/layouts/chSpinner";
+
 //https://github.com/react-hook-form/resolvers/issues/271
 const { yupResolver } = require("@hookform/resolvers/yup");
 
 const Login: NextPage = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [apiStatus, setApiStatus] = useState(apiStatuses.IDLE);
   const { addToast } = useToasts();
 
   const makeVisibleHandler = () => {
-    document.querySelector("svg")!.style.visibility = "visible";
+    const icon = document.getElementById("info-icon") as HTMLElement;
+    if (icon) icon.style.visibility = "visible";
   };
   const makeHiddenHandler = () => {
-    document.querySelector("svg")!.style.visibility = "hidden";
+    const icon = document.getElementById("info-icon") as HTMLElement;
+    if (icon) icon.style.visibility = "hidden";
   };
 
   useEffect(() => {
@@ -49,13 +61,18 @@ const Login: NextPage = () => {
   }) => {
     console.log(`LOGGING IN: ${email}, ${password}`);
     try {
+      setIsLoading(true);
       const user = await Auth.signIn(email, password);
+      setIsLoading(false);
+      setApiStatus(apiStatuses.SUCCESS);
       router.push("/cms/dashboard");
       addToast("Logged in successfully", {
         appearance: "success",
         autoDismiss: true,
       });
     } catch (error) {
+      setIsLoading(false);
+      setApiStatus(apiStatuses.ERROR);
       console.error("Error signing in:", error);
       addToast("Failed to log-in", { appearance: "error", autoDismiss: true });
     }
@@ -103,7 +120,7 @@ const Login: NextPage = () => {
           >
             <div className={styles.header}>
               <h2 onClick={() => setIsPopoverOpen(!isPopoverOpen)}>login</h2>
-              <FontAwesomeIcon size={"sm"} icon={faInfoCircle} />
+              <FontAwesomeIcon id="info-icon" size={"sm"} icon={faInfoCircle} />
             </div>
           </Popover>
         </div>
@@ -125,6 +142,25 @@ const Login: NextPage = () => {
           </div>
           <input type="submit" style={{ display: "none" }} />
         </form>
+        <div className={styles.footer}>
+          {isLoading ? (
+            <CHSpinner scale={0.3} top={"7.5"} />
+          ) : apiStatus === apiStatuses.SUCCESS ? (
+            <FontAwesomeIcon
+              className={styles.success_icon}
+              size={"2x"}
+              icon={faCheckCircle}
+            />
+          ) : apiStatus === apiStatuses.ERROR ? (
+            <FontAwesomeIcon
+              className={styles.error_icon}
+              size={"2x"}
+              icon={faHeartBroken}
+            />
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );
