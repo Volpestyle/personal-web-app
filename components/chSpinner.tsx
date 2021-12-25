@@ -1,4 +1,4 @@
-import styles from "../../styles/components/chSpinner.module.scss";
+import styles from "../styles/components/chSpinner.module.scss";
 type Props = {
   scale: Number;
   // val in rem
