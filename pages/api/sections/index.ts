@@ -4,10 +4,11 @@ import { DynamoDB } from "aws-sdk";
 import { dbClient } from "../../../utils/creds";
 
 export default async (req: NextApiRequest) => {
+  const db = await dbClient();
   if (req.method === "GET") {
     const params: DynamoDB.DocumentClient.ScanInput = {
       TableName: "SectionContent",
     };
-    return await dbClient.scan(params).promise();
+    return await db.scan(params).promise();
   }
 };

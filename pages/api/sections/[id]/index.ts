@@ -4,6 +4,7 @@ import { DynamoDB } from "aws-sdk";
 import { dbClient } from "../../../../utils/creds";
 
 export default async (req: NextApiRequest) => {
+  const db = await dbClient();
   if (req.method === "GET") {
     const params: DynamoDB.DocumentClient.GetItemInput = {
       TableName: "SectionContent",
@@ -11,7 +12,7 @@ export default async (req: NextApiRequest) => {
         sectionId: req.query.id,
       },
     };
-    return await dbClient.get(params).promise();
+    return await db.get(params).promise();
   }
   if (req.method === "PUT") {
     const params: DynamoDB.DocumentClient.PutItemInput = {
@@ -21,6 +22,6 @@ export default async (req: NextApiRequest) => {
         ...req.body,
       },
     };
-    return await dbClient.put(params).promise();
+    return await db.put(params).promise();
   }
 };
