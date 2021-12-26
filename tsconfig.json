@@ -15,13 +15,9 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "pages/api/auth/[...nextauth].js",
-    "utils/auth.js",
-    "pages/api/auth/saml.js"
-  ],
+  "experiments": {
+    "topLevelAwait": true
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
