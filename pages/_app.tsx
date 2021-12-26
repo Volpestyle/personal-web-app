@@ -1,12 +1,13 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-import { config as fontAwesomeConfig } from "@fortawesome/fontawesome-svg-core";
 import Amplify from "aws-amplify";
-fontAwesomeConfig.autoAddCss = false;
 import config from "../src/aws-exports";
+import type { AppProps } from "next/app";
+import { config as fontAwesomeConfig } from "@fortawesome/fontawesome-svg-core";
 import { ToastProvider } from "react-toast-notifications";
 import { NextPage } from "next";
+import { SessionProvider } from "next-auth/react";
+fontAwesomeConfig.autoAddCss = false;
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import "../styles/globals.css";
 
 Amplify.configure({
   ...config,
@@ -21,10 +22,15 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppPropsWithLayout) {
   const getLayout = Component.getLayout || ((page: any) => page);
   return (
-    <ToastProvider>{getLayout(<Component {...pageProps} />)}</ToastProvider>
+    <SessionProvider session={session}>
+      <ToastProvider>{getLayout(<Component {...pageProps} />)}</ToastProvider>
+    </SessionProvider>
   );
 }
 

@@ -1,19 +1,29 @@
+import React from "react";
 import { NextPage } from "next";
-import router from "next/router";
-import React, { useEffect } from "react";
-import { useToasts } from "react-toast-notifications";
+import { useRouter } from "next/router";
 import { TopNav } from "../topNav";
+import { useSession } from "next-auth/react";
 
 type Props = {
   children: React.ReactNode;
 };
 
 export const CMSLayout: NextPage<Props> = (children) => {
-  return (
+  const router = useRouter();
+  const { data: session, status: sessionStatus } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/login");
+    },
+  });
+
+  return sessionStatus === "authenticated" ? (
     <>
       <TopNav />
       <main>{children}</main>
     </>
+  ) : (
+    <></>
   );
 };
 

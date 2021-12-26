@@ -1,7 +1,9 @@
 import axios from "axios";
+import { NextApiRequest, NextApiResponse } from "next";
+import { IdentityProvider } from "saml2-js";
 import { sp, idp } from "../../../utils/samlProviders";
 
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const { data, headers } = await axios("/api/auth/csrf");
     const { csrfToken } = data;
@@ -23,7 +25,7 @@ export default async (req, res) => {
     );
   }
 
-  const createLoginRequestUrl = (idp, options = {}) =>
+  const createLoginRequestUrl = (idp: IdentityProvider, options = {}) =>
     new Promise((resolve, reject) => {
       sp.create_login_request_url(idp, options, (error, loginUrl) => {
         if (error) {
@@ -34,7 +36,7 @@ export default async (req, res) => {
     });
 
   try {
-    const loginUrl = await createLoginRequestUrl(idp);
+    const loginUrl: any = await createLoginRequestUrl(idp);
     return res.redirect(loginUrl);
   } catch (error) {
     console.error(error);
