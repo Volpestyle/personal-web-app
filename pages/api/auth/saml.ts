@@ -1,9 +1,11 @@
+// https://github.com/Jenyus-Org/next-auth-saml ty :D
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 import { IdentityProvider } from "saml2-js";
-import { sp, idp } from "../../../utils/samlProviders";
+import samlProviders from "../../../utils/samlProviders";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const { sp, idp } = await samlProviders();
   if (req.method === "POST") {
     const { data, headers } = await axios("/api/auth/csrf");
     const { csrfToken } = data;
