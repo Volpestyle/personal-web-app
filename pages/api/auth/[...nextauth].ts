@@ -50,6 +50,7 @@ const getProviderOptions = (): UserCredentialsConfig<
 
 export default NextAuth({
   providers: [CredentialsProvider(getProviderOptions())],
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login",
   },
