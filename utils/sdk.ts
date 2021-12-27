@@ -36,19 +36,13 @@ export const getS3Files = async (
   keys: string[],
   options: Partial<getS3FilesOptions> = {}
 ): Promise<GetObjectOutput[] | string[]> => {
-  const getObjectRequests = keys.map((key) => {
+  const promises: Promise<GetObjectCommandOutput>[] = keys.map((key) => {
     const getObjectRequest: GetObjectCommandInput = {
       Bucket: bucketName,
       Key: key,
     };
-    return getObjectRequest;
+    return s3Client.send(new GetObjectCommand(getObjectRequest));
   });
-  const promises: Promise<GetObjectCommandOutput>[] = getObjectRequests.map(
-    (req) => {
-      const getObject = new GetObjectCommand(req);
-      return s3Client.send(getObject);
-    }
-  );
   if (!options.toString) return Promise.all(promises);
   const fileData = await Promise.all(promises);
   const files2Strings = fileData.map(

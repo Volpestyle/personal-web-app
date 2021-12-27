@@ -17,7 +17,7 @@ export const CMSLayout: NextPage<Props> = ({ children }) => {
 
   return sessionStatus === "authenticated" ? (
     <>
-      <TopNav />
+      <TopNav session={session} />
       <main>{children}</main>
     </>
   ) : (
