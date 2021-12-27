@@ -32,7 +32,7 @@
     "react-query": "^3.34.6",
     "react-tiny-popover": "^7.0.1",
     "react-toast-notifications": "^2.5.1",
-    "saml2-js": "volpestyle/saml2-js#fix-buffer",
+    "saml2-js": "volpestyle/saml2-js",
     "sass": "^1.43.4",
     "yup": "^0.32.11"
   },
