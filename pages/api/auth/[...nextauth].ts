@@ -25,6 +25,7 @@ const getProviderOptions = (): UserCredentialsConfig<
       const _samlBody = JSON.parse(decodeURIComponent(req.samlBody));
       const postAssert = (idp: IdentityProvider, samlBody: any) =>
         new Promise((resolve, reject) => {
+          console.log("Request:", req);
           sp.post_assert(
             idp,
             {
