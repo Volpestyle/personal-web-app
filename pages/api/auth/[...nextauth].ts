@@ -58,11 +58,11 @@ export default NextAuth({
     signIn: "/login",
   },
   callbacks: {
-    async jwt(data) {
-      return data;
+    async jwt({ token, user }) {
+      token.user = user?.user;
+      return token;
     },
-    async session({ session, user, token }) {
-      session.user = user;
+    async session({ session, token }) {
       session.token = token;
       return session;
     },
