@@ -7,7 +7,7 @@ import samlProviders from "../../../utils/samlProviders";
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // Handle POST first since it doesn't require samlProviders https://github.com/Jenyus-Org/next-auth-saml/blob/main/pages/api/auth/login/saml.js
   if (req.method === "POST") {
-    const { data, headers } = await axios("/api/auth/csrf", {
+    const { data, headers } = await axios("/csrf", {
       baseURL: process.env.NEXTAUTH_URL,
     });
     const { csrfToken } = data;
