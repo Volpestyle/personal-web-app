@@ -4,9 +4,7 @@ import {
   IdentityProviderOptions,
   ServiceProviderOptions,
 } from "saml2-js";
-import { streamToString, getS3Files } from "./sdk";
-import { GetObjectCommandOutput } from "@aws-sdk/client-s3";
-import { Readable } from "stream";
+import { getS3Files } from "./sdk";
 
 // Define our SAML service (this app) and identity providers (aws sso)
 export default async () => {
@@ -18,6 +16,7 @@ export default async () => {
     private_key: pemData[0] as string,
     certificate: process.env.SP_CERT!,
     assert_endpoint: "https://jcvolpe.me/api/auth/saml",
+    nameid_format: "urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
     allow_unencrypted_assertion: true,
   };
   const idp_options: IdentityProviderOptions = {
