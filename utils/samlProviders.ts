@@ -12,7 +12,7 @@ import {
 } from "@aws-sdk/client-s3";
 import { Readable } from "stream";
 
-// Get private key and certificate pems needed for SAML from s3 bucket
+// Get private key and certificate pems needed for SAML service provider from s3 bucket
 const getPems = () => {
   const pems = ["sp-pk.pem", "sp-cert.pem"];
   const getObjectRequests = pems.map((pemName) => {
@@ -39,7 +39,6 @@ export default async () => {
       await streamToString(res.Body as Readable)
   );
   const fileStrings = await Promise.all(pem2Strings);
-  console.log(fileStrings[2]);
   const sp_options: ServiceProviderOptions = {
     entity_id: "https://jcvolpe.me/api/metadata",
     private_key: fileStrings[0],
