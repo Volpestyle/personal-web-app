@@ -15,7 +15,7 @@ export default async () => {
     entity_id: "https://jcvolpe.me/api/metadata",
     private_key: pemData[0] as string,
     certificate: process.env.SP_CERT!,
-    assert_endpoint: "https://jcvolpe.me/api/auth/saml",
+    assert_endpoint: "https://jcvolpe.me/api/auth/signin/saml",
     nameid_format: "urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
     allow_unencrypted_assertion: true,
   };

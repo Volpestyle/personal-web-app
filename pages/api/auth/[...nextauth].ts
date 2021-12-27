@@ -59,11 +59,11 @@ export default NextAuth({
   },
   callbacks: {
     async jwt({ token, user }) {
-      token.user = user?.user;
-      return token;
+      return { token, user };
     },
     async session({ session, token }) {
-      session.token = token;
+      session.token = token.token;
+      session.user = token.user as any;
       return session;
     },
   },
