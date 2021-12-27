@@ -2,7 +2,7 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 import { IdentityProvider } from "saml2-js";
-import samlProviders from "../../../utils/samlProviders";
+import samlProviders from "../../../../utils/samlProviders";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // Handle POST first since it doesn't require samlProviders https://github.com/Jenyus-Org/next-auth-saml/blob/main/pages/api/auth/login/saml.js
