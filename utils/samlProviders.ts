@@ -4,14 +4,15 @@ import {
   IdentityProviderOptions,
   ServiceProviderOptions,
 } from "saml2-js";
-import { s3Client } from "./sdk";
+import { s3Client, streamToString } from "./sdk";
 import {
   GetObjectCommand,
   GetObjectCommandInput,
   GetObjectCommandOutput,
 } from "@aws-sdk/client-s3";
+import { Readable } from "stream";
 
-// Get private key and certificate pems needed for SAML
+// Get private key and certificate pems needed for SAML from s3 bucket
 const getPems = () => {
   const pems = ["sp-pk", "sp-cert", "sso-idp-cert"];
   const getObjectRequests = pems.map((pemName) => {
@@ -30,21 +31,25 @@ const getPems = () => {
   return Promise.all(promises);
 };
 
-// SAML providers
+// Define our SAML service (this app) and identity providers (aws sso)
 export default async () => {
   const pemData = await getPems();
-  const pems = pemData.map((res: GetObjectCommandOutput): any => res.Body);
+  const pems = pemData.map(
+    async (res: GetObjectCommandOutput): Promise<string> =>
+      await streamToString(res.Body as Readable)
+  );
+  const pemStrings = await Promise.all(pems);
   const sp_options: ServiceProviderOptions = {
     entity_id: "https://jcvolpe.me/api/metadata",
-    private_key: pems[0].toString(),
-    certificate: pems[1].toString(),
+    private_key: pemStrings[0],
+    certificate: pemStrings[1],
     assert_endpoint: "https://jcvolpe.me/api/auth/saml",
     allow_unencrypted_assertion: true,
   };
   const idp_options: IdentityProviderOptions = {
     sso_login_url: process.env.SSO_ENTRY_POINT!,
     sso_logout_url: process.env.SSO_EXIT_POINT!,
-    certificates: [pems[2].toString()],
+    certificates: [pemStrings[2]],
   };
   return {
     sp: new ServiceProvider(sp_options),
