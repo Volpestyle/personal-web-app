@@ -40,8 +40,8 @@ const getProviderOptions = (): UserCredentialsConfig<
         });
 
       try {
-        const { user }: any = await postAssert(idp, samlResponse);
-        return user;
+        const postAssertResponse: any = await postAssert(idp, samlResponse);
+        return postAssertResponse;
       } catch (error) {
         console.error(error);
         return null;
