@@ -35,7 +35,7 @@ export default async () => {
   const pemData = await getPems();
   const pems = pemData.map((res: GetObjectCommandOutput): any => res.Body);
   const sp_options: ServiceProviderOptions = {
-    entity_id: "saml-poc",
+    entity_id: "jcvolpe.me",
     private_key: pems[0].toString(),
     certificate: pems[1].toString(),
     assert_endpoint: "https://jcvolpe.me/api/auth/saml",
