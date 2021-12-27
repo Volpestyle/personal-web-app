@@ -1,6 +1,12 @@
 import { fromTemporaryCredentials } from "@aws-sdk/credential-providers";
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { S3Client } from "@aws-sdk/client-s3";
+import {
+  GetObjectCommand,
+  GetObjectCommandInput,
+  GetObjectCommandOutput,
+  GetObjectOutput,
+  S3Client,
+} from "@aws-sdk/client-s3";
 import { Readable } from "stream";
 
 const params = {
@@ -20,6 +26,37 @@ export const s3Client = new S3Client({
     params,
   }),
 });
+
+// Batch getObject
+type getS3FilesOptions = {
+  toString: boolean;
+};
+export const getS3Files = async (
+  bucketName: string,
+  keys: string[],
+  options: Partial<getS3FilesOptions> = {}
+): Promise<GetObjectOutput[] | string[]> => {
+  const getObjectRequests = keys.map((key) => {
+    const getObjectRequest: GetObjectCommandInput = {
+      Bucket: bucketName,
+      Key: key,
+    };
+    return getObjectRequest;
+  });
+  const promises: Promise<GetObjectCommandOutput>[] = getObjectRequests.map(
+    (req) => {
+      const getObject = new GetObjectCommand(req);
+      return s3Client.send(getObject);
+    }
+  );
+  if (!options.toString) return Promise.all(promises);
+  const fileData = await Promise.all(promises);
+  const files2Strings = fileData.map(
+    async (res: GetObjectCommandOutput): Promise<string> =>
+      await streamToString(res.Body as Readable)
+  );
+  return Promise.all(files2Strings);
+};
 
 /**
  * Takes a readable object and converts to string
