@@ -13,8 +13,8 @@ import {
 import { Readable } from "stream";
 
 // Get private key and certificate pems needed for SAML from s3 bucket
-const getFiles = () => {
-  const pems = ["sp-pk.pem", "sp-cert.pem", "sso-jcvolpe-metadata.xml"];
+const getPems = () => {
+  const pems = ["sp-pk.pem", "sp-cert.pem"];
   const getObjectRequests = pems.map((pemName) => {
     const getObjectRequest: GetObjectCommandInput = {
       Bucket: "jcvolpe-saml-pems",
@@ -33,12 +33,12 @@ const getFiles = () => {
 
 // Define our SAML service (this app) and identity providers (aws sso)
 export default async () => {
-  const fileData = await getFiles();
-  const files2Strings = fileData.map(
+  const pemData = await getPems();
+  const pem2Strings = pemData.map(
     async (res: GetObjectCommandOutput): Promise<string> =>
       await streamToString(res.Body as Readable)
   );
-  const fileStrings = await Promise.all(files2Strings);
+  const fileStrings = await Promise.all(pem2Strings);
   console.log(fileStrings[2]);
   const sp_options: ServiceProviderOptions = {
     entity_id: "https://jcvolpe.me/api/metadata",
@@ -50,7 +50,7 @@ export default async () => {
   const idp_options: IdentityProviderOptions = {
     sso_login_url: process.env.SSO_ENTRY_POINT!,
     sso_logout_url: process.env.SSO_EXIT_POINT!,
-    certificates: [fileStrings[2]],
+    certificates: [process.env.SSO_CERT!],
   };
   return {
     sp: new ServiceProvider(sp_options),
