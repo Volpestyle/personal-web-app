@@ -6,6 +6,31 @@ import samlProviders from "../../../utils/samlProviders";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { sp, idp } = await samlProviders();
+  const createLoginRequestUrl = (
+    idp: IdentityProvider,
+    options = {}
+  ): Promise<string> =>
+    new Promise((resolve, reject) => {
+      sp.create_login_request_url(idp, options, (error, loginUrl) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(loginUrl);
+      });
+    });
+
+  if (req.method === "GET") {
+    createLoginRequestUrl(idp)
+      .then((loginUrl) => {
+        if (!loginUrl) return res.status(500);
+        return res.redirect(loginUrl);
+      })
+      .catch((err) => {
+        console.error(err);
+        return res.status(500);
+      });
+  }
+
   if (req.method === "POST") {
     const { data, headers } = await axios("/api/auth/csrf");
     const { csrfToken } = data;
@@ -25,23 +50,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         </body>
       </html>`
     );
-  }
-
-  const createLoginRequestUrl = (idp: IdentityProvider, options = {}) =>
-    new Promise((resolve, reject) => {
-      sp.create_login_request_url(idp, options, (error, loginUrl) => {
-        if (error) {
-          reject(error);
-        }
-        resolve(loginUrl);
-      });
-    });
-
-  try {
-    const loginUrl: any = await createLoginRequestUrl(idp);
-    return res.redirect(loginUrl);
-  } catch (error) {
-    console.error(error);
-    return res.status(500);
   }
 };
