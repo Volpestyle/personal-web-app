@@ -22,14 +22,15 @@ const getProviderOptions = (): UserCredentialsConfig<
     authorize: async (req: Record<string, string> | undefined) => {
       if (!req) return;
       const { sp, idp } = await samlProviders();
-      const _samlBody = JSON.parse(decodeURIComponent(req.samlBody));
-      const postAssert = (idp: IdentityProvider, samlBody: any) =>
+      const samlResponse = JSON.parse(decodeURIComponent(req.samlResponse));
+      const postAssert = (idp: IdentityProvider, samlResponse: any) =>
         new Promise((resolve, reject) => {
-          console.log("Request:", req);
           sp.post_assert(
             idp,
             {
-              request_body: samlBody,
+              request_body: {
+                SAMLResponse: samlResponse,
+              },
             },
             (error, response) => {
               if (error) reject(error);
@@ -39,7 +40,7 @@ const getProviderOptions = (): UserCredentialsConfig<
         });
 
       try {
-        const { user }: any = await postAssert(idp, _samlBody);
+        const { user }: any = await postAssert(idp, samlResponse);
         return user;
       } catch (error) {
         console.error(error);

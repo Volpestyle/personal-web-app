@@ -11,7 +11,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       baseURL: process.env.NEXTAUTH_URL,
     });
     const { csrfToken } = data;
-    const encodedSAMLBody = encodeURIComponent(JSON.stringify(req.body));
+    const encodedSAMLResponse = encodeURIComponent(
+      JSON.stringify(req.body.SAMLResponse)
+    );
 
     res.setHeader("set-cookie", headers["set-cookie"] ?? "");
     return res.send(
@@ -19,7 +21,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         <body>
           <form action="/api/auth/callback/saml" method="POST">
             <input type="hidden" name="csrfToken" value="${csrfToken}"/>
-            <input type="hidden" name="samlBody" value="${encodedSAMLBody}"/>
+            <input type="hidden" name="samlResponse" value="${encodedSAMLResponse}"/>
           </form>
           <script>
             document.forms[0].submit();
