@@ -10,7 +10,7 @@ import {
 import { Readable } from "stream";
 
 const params = {
-  RoleArn: "arn:aws:iam::842434829012:role/jcvolpe.me-sdk",
+  RoleArn: process.env.TEMP_CREDENTIALS_ROLE_ARN,
 };
 
 export const dbClient = new DynamoDBClient({
