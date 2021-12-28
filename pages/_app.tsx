@@ -1,5 +1,3 @@
-import Amplify from "aws-amplify";
-import config from "../src/aws-exports";
 import type { AppProps } from "next/app";
 import { config as fontAwesomeConfig } from "@fortawesome/fontawesome-svg-core";
 import { ToastProvider } from "react-toast-notifications";
@@ -8,11 +6,6 @@ import { SessionProvider } from "next-auth/react";
 fontAwesomeConfig.autoAddCss = false;
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../styles/globals.css";
-
-Amplify.configure({
-  ...config,
-  ssr: true,
-});
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;

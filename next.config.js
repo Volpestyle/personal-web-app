@@ -13,5 +13,6 @@ module.exports = {
     SP_PK_FILENAME: process.env.SP_PK_FILENAME,
     SP_CERT: process.env.SP_CERT,
     SSO_CERT: process.env.SSO_CERT,
+    TEMP_CREDENTIALS_ROLE_ARN: process.env.TEMP_CREDENTIALS_ROLE_ARN,
   },
 };
