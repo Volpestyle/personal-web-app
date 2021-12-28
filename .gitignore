@@ -59,3 +59,6 @@ amplifytools.xcconfig
 
 #vscode
 .vscode/
+
+# server.js, since it breaks nextAuth in prod
+server.js
