@@ -1,5 +1,4 @@
 import { NextPage } from "next";
-import { Auth, withSSRContext } from "aws-amplify";
 import { ReactElement, ReactNode, useEffect } from "react";
 import { LayoutPage } from "../../types/layoutPage";
 import { useSession } from "next-auth/react";
