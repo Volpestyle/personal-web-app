@@ -1,9 +1,10 @@
-import NextAuth, { User } from "next-auth";
-import { getToken } from "next-auth/jwt";
+import NextAuth, { Session, User } from "next-auth";
+import { getToken, JWT } from "next-auth/jwt";
 import CredentialsProvider, {
   CredentialInput,
   CredentialsConfig,
 } from "next-auth/providers/credentials";
+import { redirect } from "next/dist/server/api-utils";
 import { IdentityProvider } from "saml2-js";
 import samlProviders from "../../../utils/samlProviders";
 
@@ -59,12 +60,15 @@ export default NextAuth({
   },
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.user = user;
+      if (user) return user;
       return token;
     },
-    async session({ session, token }) {
-      session.user = token;
+    async session({ session, token }: { session: Session; token: any }) {
+      if (token.user) session.user = token.user;
       return session;
+    },
+    async redirect({ url, baseUrl }) {
+      return `${baseUrl}/cms/dashboard`;
     },
   },
 });

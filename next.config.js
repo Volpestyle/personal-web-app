@@ -8,6 +8,10 @@ module.exports = {
     AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    SP_ASSERT_ENDPOINT: process.env.SP_ASSERT_ENDPOINT,
+    SP_ENTITY_ID: process.env.SP_ENTITY_ID,
+    SP_PK_FILENAME: process.env.SP_PK_FILENAME,
+    SP_CERT: process.env.SP_CERT,
     SSO_CERT: process.env.SSO_CERT,
   },
 };

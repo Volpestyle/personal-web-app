@@ -1,21 +1,15 @@
-import axios from "axios";
-import { Session } from "next-auth";
-import router from "next/router";
+import { signOut } from "next-auth/react";
 import { useToasts } from "react-toast-notifications";
 import styles from "../styles/components/topnav.module.scss";
+import { errorOptions, successOptions } from "../utils/toasts";
 import { Button } from "./button";
+import { useCMSContext } from "./providers/cmsProvider";
 
-type TopNavProps = {
-  session: Session | null;
-};
-
-export const TopNav = ({ session }: TopNavProps) => {
+export const TopNav = () => {
   const { addToast } = useToasts();
-  const handleLogout = async () => {
-    await axios("/logout", {
-      baseURL: process.env.NEXTAUTH_URL,
-      method: "POST",
-    });
+  const { user } = useCMSContext();
+  const handleLogout = () => {
+    signOut({ callbackUrl: `${window.location.pathname}/login` });
   };
   return (
     <div className={styles.container}>
