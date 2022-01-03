@@ -3,10 +3,17 @@
 .container {
   font-family: vars.$oceanwide;
   padding: 0 2rem;
+  background-color: vars.$base-tan;
 }
 
 .intro {
   text-align: center;
+  h1 {
+    margin-bottom: 0.2rem;
+  }
+  h2 {
+    margin-top: 2rem;
+  }
 }
 
 .main {
@@ -19,7 +26,18 @@
   align-items: center;
 }
 
+.parallax {
+  /* Hide scrollbar for IE, Edge add Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* Firefox */
+}
+
+.parallax::-webkit-scrollbar {
+  display: none;
+}
+
 .footer {
+  font-family: vars.$spacemono;
   display: flex;
   flex: 1;
   padding: 2rem 0;

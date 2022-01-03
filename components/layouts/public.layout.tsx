@@ -11,7 +11,6 @@ export const PublicLayout: NextPage<Props> = ({ children }) => {
     <>
       <Nav />
       <main>{children}</main>
-      <Footer />
     </>
   );
 };
