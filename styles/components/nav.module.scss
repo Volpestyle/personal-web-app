@@ -1,0 +1,30 @@
+.container {
+  position: relative;
+  padding: 0rem 2rem;
+  nav {
+    border-bottom: 1px solid #eaeaea;
+  }
+  ul {
+    position: absolute;
+    top: 0;
+    right: 0;
+    li {
+      margin: 0 2rem;
+      display: inline-block;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+.navItem {
+  .underline {
+    margin-top: 5px;
+    position: relative;
+    height: 3px;
+    background-color: black;
+  }
+}

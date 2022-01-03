@@ -1,5 +1,12 @@
+@use "./vars.scss";
+
 .container {
+  font-family: vars.$oceanwide;
   padding: 0 2rem;
+}
+
+.intro {
+  text-align: center;
 }
 
 .main {
