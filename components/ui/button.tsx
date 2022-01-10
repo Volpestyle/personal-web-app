@@ -1,8 +1,8 @@
 import { createRef, MouseEventHandler, ReactNode, useEffect } from "react";
-import styles from "../styles/components/button.module.scss";
+import styles from "styles/components/ui/button.module.scss";
 type ButtonProps = {
   children: ReactNode;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   icon?: ReactNode;
 };
 

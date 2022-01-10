@@ -4,13 +4,18 @@ import Footer from "components/footer";
 
 type Props = {
   children: React.ReactNode;
+  showFooter?: boolean;
 };
 
-export const PublicLayout: NextPage<Props> = ({ children }) => {
+export const PublicLayout: NextPage<Props> = ({
+  children,
+  showFooter = true,
+}) => {
   return (
     <>
       <Nav />
       <main>{children}</main>
+      {showFooter && <Footer />}
     </>
   );
 };

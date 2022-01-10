@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NavItem from "./navItem";
 import styles from "styles/components/nav.module.scss";
+import { useState } from "react";
 
 const Nav = () => {
   return (

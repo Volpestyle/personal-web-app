@@ -1,6 +1,6 @@
 import React, { useEffect, createContext, useContext, useMemo } from "react";
 import { NextPage } from "next";
-import { TopNav } from "../topNav";
+import { TopNav } from "../../containers/cms/topNav";
 import { useSession } from "next-auth/react";
 import { SSOUser } from "../../utils/samlProviders";
 import { CMSProvider } from "../providers/cmsProvider";

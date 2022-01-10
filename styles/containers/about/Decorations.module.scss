@@ -1,0 +1,121 @@
+.bar1 {
+  width: 100%;
+  height: 100%;
+  transform: scale(2) translate(0%, 0%) rotate(-10deg);
+}
+
+@media only screen and (min-width: 1690px) {
+  .bar1 {
+    transform: scale(2.2) rotate(-10deg);
+  }
+}
+@media only screen and (min-width: 2028px) {
+  .bar1 {
+    transform: scale(3) rotate(-10deg);
+  }
+}
+
+.square1 {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.2) translate(20rem, -180%);
+}
+
+.square1Outline {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.2) translate(20rem, -190%);
+}
+
+.square2 {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.2) translate(100rem, -90%);
+}
+
+.square2Outline {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.2) translate(100rem, -100%);
+}
+
+.square3 {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.2) translate(180rem, 0%);
+}
+.square3Inner1 {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.17) translate(212rem, 0%);
+}
+
+.square3Inner2 {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.14) translate(258rem, 0%);
+}
+
+.square3Inner3 {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.1) translate(361rem, 0%);
+}
+
+.square3Inner4 {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.07) translate(515rem, 0%);
+}
+
+.square3Inner5 {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.035) translate(1030rem, 0%);
+}
+
+.square4 {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.2) translate(-210rem, 20%);
+}
+
+.square4Outline {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.34) translate(-113rem, -20%);
+}
+
+.square5 {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.244) translate(-108.5rem, 65%);
+}
+
+.square5Outline {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.27) translate(-98rem, 117%);
+}
+
+.pic1 {
+  position: absolute;
+  left: 4%;
+  top: 30%;
+}
+.pic1Content {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  width: 20%;
+  opacity: 1;
+}
+.pic1Overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.253);
+  overflow: hidden;
+}

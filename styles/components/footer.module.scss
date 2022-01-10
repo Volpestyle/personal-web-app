@@ -1,0 +1,24 @@
+@use "../vars.scss";
+
+.footer {
+  font-family: vars.$spacemono;
+  display: flex;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+  .poweredBy {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    .logo {
+      margin-top: 1rem;
+      margin-left: 0.9rem;
+    }
+  }
+  .pbWrap {
+    width: fit-content;
+  }
+}

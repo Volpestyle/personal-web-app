@@ -29,6 +29,7 @@
     "react-dom": "17.0.2",
     "react-draggable": "^4.4.4",
     "react-hook-form": "^7.20.2",
+    "react-intersection-observer": "^8.33.1",
     "react-query": "^3.34.6",
     "react-tiny-popover": "^7.0.1",
     "react-toast-notifications": "^2.5.1",

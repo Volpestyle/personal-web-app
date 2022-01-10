@@ -1,11 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useToasts } from "react-toast-notifications";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Login.module.scss";
 
 const Home: NextPage = () => {
   const router = useRouter();

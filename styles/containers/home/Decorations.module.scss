@@ -1,0 +1,45 @@
+.bar1 {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.5);
+}
+
+@media only screen and (min-width: 1776px) {
+  .bar1 {
+    transform: scale(2);
+  }
+}
+@media only screen and (min-width: 2167px) {
+  .bar1 {
+    transform: scale(2.5);
+  }
+}
+@media only screen and (min-width: 2563px) {
+  .bar1 {
+    transform: scale(3);
+  }
+}
+
+.bar2 {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.5) scaleX(1.5) translate(-5%, -10%);
+}
+
+@media only screen and (min-width: 2000px) {
+  .bar2 {
+    transform: scale(2) scaleX(2) translate(-5%, -10%);
+  }
+}
+
+.pillar1 {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.7) translate(-60%, 0%);
+}
+
+@media only screen and (min-width: 1281px) {
+  .pillar1 {
+    transform: scale(0.7) translate(-65%, 0%);
+  }
+}
