@@ -1,12 +1,17 @@
 import PublicLayout from "components/layouts/public.layout";
 import type { NextPage } from "next";
 import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Decorations from "containers/about/decorations";
 import homeStyles from "styles/containers/home/Home.module.scss";
 import styles from "styles/containers/about/AboutMe.module.scss";
 import Image from "next/image";
+import LinkButton from "components/ui/linkButton";
+import { useRouter } from "next/router";
+import { PDFViewer } from "components/pdf-viewer/pdf-viewer";
+import { Button } from "components/ui/button";
 
+const downArrowSvg = "/svgs/arrow-down-solid.svg";
 const AboutMe: NextPage = () => {
   const parallax = useRef<IParallax>(null);
   const scroll = (to: number) => {
@@ -14,36 +19,24 @@ const AboutMe: NextPage = () => {
       parallax.current.scrollTo(to);
     }
   };
+
+  const router = useRouter();
+  useEffect(() => {
+    const onHashChangeStart = (url: string) => {
+      const hash = url.slice(url.indexOf("#") + 1, url.length);
+      console.log(hash);
+      if (hash === "resume") scroll(1);
+      if (hash === "education") scroll(3);
+    };
+    router.events.on("hashChangeStart", onHashChangeStart);
+    return () => {
+      router.events.off("hashChangeStart", onHashChangeStart);
+    };
+  }, [router.events]);
+
   return (
     <PublicLayout showFooter={false}>
-      <div className={styles.container}>
-        <Parallax className={homeStyles.parallax} pages={2} ref={parallax}>
-          <Decorations />
-          <ParallaxLayer offset={0} speed={1}>
-            <div className={styles.introWrap}>
-              <div className={styles.intro}>
-                <h1>About me</h1>
-                <div className={styles.titleUnderline}>
-                  <Image
-                    src="/svgs/h-zigzag-line.svg"
-                    width={"100%"}
-                    height={"100%"}
-                  />
-                </div>
-              </div>
-            </div>
-          </ParallaxLayer>
-          <ParallaxLayer offset={0} speed={1.5}>
-            <div className={styles.body}>
-              <p>
-                My name is James Connor Volpe, <br />
-                I'm 22 years old, and in 2021 I got my B.S. in Software
-                Engineering.
-              </p>
-            </div>
-          </ParallaxLayer>
-        </Parallax>
-      </div>
+      <div className={styles.container}></div>
     </PublicLayout>
   );
 };

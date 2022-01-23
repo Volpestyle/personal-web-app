@@ -10,6 +10,26 @@ const Decorations = () => {
           <Image src="/svgs/dh-zigzag-bar.svg" layout="fill" />
         </div>
       </ParallaxLayer>
+      <ParallaxLayer offset={0} speed={3} style={{ zIndex: 0 }}>
+        <div className={styles.square1}>
+          <Image src="/svgs/squares/square1/square.svg" layout="fill" />
+        </div>
+      </ParallaxLayer>
+      <ParallaxLayer offset={0} speed={2} style={{ zIndex: 0 }}>
+        <div className={styles.square1Outline}>
+          <Image src="/svgs/squares/square1/outline.svg" layout="fill" />
+        </div>
+      </ParallaxLayer>
+      <ParallaxLayer offset={0} speed={3} style={{ zIndex: 0 }}>
+        <div className={styles.square2}>
+          <Image src="/svgs/squares/square2/square.svg" layout="fill" />
+        </div>
+      </ParallaxLayer>
+      <ParallaxLayer offset={0} speed={2} style={{ zIndex: 0 }}>
+        <div className={styles.square2Outline}>
+          <Image src="/svgs/squares/square2/outline.svg" layout="fill" />
+        </div>
+      </ParallaxLayer>
       <ParallaxLayer offset={1} speed={4}>
         <div className={styles.bar2}>
           <Image src="/svgs/dh-l-zigzag-bar.svg" layout="fill" />

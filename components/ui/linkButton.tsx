@@ -6,10 +6,15 @@ import Image from "next/image";
 
 type LinkButtonProps = {
   href: string;
+  imgSrc?: string;
   children: ReactNode;
 };
 
-const LinkButton = ({ href, children }: LinkButtonProps) => {
+const LinkButton = ({
+  href,
+  imgSrc = "/svgs/link-solid.svg",
+  children,
+}: LinkButtonProps) => {
   const [showIcon, setShowIcon] = useState<boolean>(false);
 
   const slideInIcon = useSpring({
@@ -40,7 +45,7 @@ const LinkButton = ({ href, children }: LinkButtonProps) => {
         <Link href={href}>{children}</Link>
       </div>
       <animated.div style={{ paddingLeft: "1rem", ...slideInIcon }}>
-        <Image src="/svgs/link-solid.svg" height={20} width={20} />
+        <Image src={imgSrc} height={20} width={20} />
       </animated.div>
     </div>
   );

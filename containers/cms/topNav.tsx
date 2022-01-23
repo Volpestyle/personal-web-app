@@ -1,6 +1,6 @@
 import { signOut } from "next-auth/react";
 import styles from "styles/components/cms/topnav.module.scss";
-import { Button } from "components/ui/button";
+import { Button } from "containers/cms/button";
 
 export const TopNav = () => {
   const handleLogout = () => {
