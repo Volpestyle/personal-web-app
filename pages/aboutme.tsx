@@ -1,38 +1,34 @@
 import PublicLayout from "components/layouts/public.layout";
 import type { NextPage } from "next";
-import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax";
-import { useEffect, useRef } from "react";
-import Decorations from "containers/about/decorations";
-import homeStyles from "styles/containers/home/Home.module.scss";
+import { createRef, useEffect, useRef } from "react";
+import useScrollTo from "react-spring-scroll-to-hook";
 import styles from "styles/containers/about/AboutMe.module.scss";
 import Image from "next/image";
 import LinkButton from "components/ui/linkButton";
 import { useRouter } from "next/router";
 import { PDFViewer } from "components/pdf-viewer/pdf-viewer";
 import { Button } from "components/ui/button";
+import { config, useSpring } from "@react-spring/web";
 
-const downArrowSvg = "/svgs/arrow-down-solid.svg";
+const RESUME_SRC = "/resume/spring-2022.pdf";
 const AboutMe: NextPage = () => {
-  const parallax = useRef<IParallax>(null);
-  const scroll = (to: number) => {
-    if (parallax.current) {
-      parallax.current.scrollTo(to);
+  const router = useRouter();
+
+  const { scrollTo } = useScrollTo(config.slow);
+
+  const handleScroll = (section: string) => {
+    if (
+      router.asPath.slice(
+        router.asPath.indexOf("#") + 1,
+        router.asPath.length
+      ) !== section
+    ) {
+      scrollTo(document.getElementById(section));
+      window.location.hash = `#${section}`;
+    } else {
+      scrollTo(document.getElementById(section));
     }
   };
-
-  const router = useRouter();
-  useEffect(() => {
-    const onHashChangeStart = (url: string) => {
-      const hash = url.slice(url.indexOf("#") + 1, url.length);
-      console.log(hash);
-      if (hash === "resume") scroll(1);
-      if (hash === "education") scroll(3);
-    };
-    router.events.on("hashChangeStart", onHashChangeStart);
-    return () => {
-      router.events.off("hashChangeStart", onHashChangeStart);
-    };
-  }, [router.events]);
 
   return (
     <PublicLayout showFooter={false}>
@@ -82,7 +78,10 @@ const AboutMe: NextPage = () => {
               marginTop: "3rem",
             }}
           >
-            <LinkButton imgSrc={"/svgs/arrow-down-white.svg"} href="/aboutme">
+            <LinkButton
+              imgSrc={"/svgs/arrow-down-white.svg"}
+              onClick={() => handleScroll("resume")}
+            >
               my resumé
             </LinkButton>
             {/* <LinkButton imgSrc={"/svgs/arrow-down-white.svg"} href="/aboutme">
@@ -90,16 +89,18 @@ const AboutMe: NextPage = () => {
             </LinkButton> */}
           </div>
           <div className={styles.resumeWrapper}>
-            <div className={styles.resumeContainer}>
-              <PDFViewer pdfSrc={"/resume/spring-2022.pdf"} />
-              <Button style={{ color: "white" }}>
-                <a>
+            <div className={styles.resumeContainer} id={"resume"}>
+              <PDFViewer pdfSrc={RESUME_SRC} />
+              <Button style={{ color: "white", width: "15rem" }}>
+                <a target={"_blank"} href={RESUME_SRC}>
                   download/view
-                  <Image
-                    src={"/svgs/download-white.svg"}
-                    width={20}
-                    height={20}
-                  />
+                  <span style={{ paddingLeft: "1em" }}>
+                    <Image
+                      src={"/svgs/download-white.svg"}
+                      width={20}
+                      height={20}
+                    />
+                  </span>
                 </a>
               </Button>
             </div>

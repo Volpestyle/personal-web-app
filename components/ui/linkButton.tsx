@@ -5,7 +5,8 @@ import styles from "styles/components/ui/linkButton.module.scss";
 import Image from "next/image";
 
 type LinkButtonProps = {
-  href: string;
+  href?: string;
+  onClick?: () => void;
   imgSrc?: string;
   iconBefore?: boolean;
   newTab?: boolean;
@@ -14,6 +15,7 @@ type LinkButtonProps = {
 
 const LinkButton = ({
   href,
+  onClick,
   imgSrc = "/svgs/link-white.svg",
   iconBefore,
   newTab,
@@ -44,6 +46,7 @@ const LinkButton = ({
       className={styles.container}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onClick={onClick}
     >
       {iconBefore && (
         <animated.div style={{ paddingRight: "1rem", ...slideInIcon }}>
@@ -51,7 +54,7 @@ const LinkButton = ({
         </animated.div>
       )}
       <div className={styles.link}>
-        {newTab ? (
+        {newTab || !href ? (
           <a href={href} target="_blank">
             {children}
           </a>

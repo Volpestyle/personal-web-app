@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useToasts } from "react-toast-notifications";
-import styles from "../styles/Login.module.scss";
+import styles from "styles/containers/cms/Login.module.scss";
 
 const Home: NextPage = () => {
   const router = useRouter();
