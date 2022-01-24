@@ -1,13 +1,14 @@
 @use "styles/vars.scss";
 
 .container {
-  font-family: vars.$oceanwide-semibold;
+  font-family: vars.$monograf-bold;
   width: 100%;
+  color: white;
 }
 
 .intro {
   text-align: center;
-  margin: 0% 30%;
+  margin: 0% 20%;
   h1 {
     margin-bottom: 0.2rem;
   }
@@ -21,7 +22,7 @@
     text-align: left;
     margin-top: 3rem;
     font-size: 1.2rem;
-    font-family: vars.$oceanwide-regular;
+    font-family: vars.$monograf-regular;
   }
 }
 

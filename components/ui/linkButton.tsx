@@ -7,12 +7,16 @@ import Image from "next/image";
 type LinkButtonProps = {
   href: string;
   imgSrc?: string;
+  iconBefore?: boolean;
+  newTab?: boolean;
   children: ReactNode;
 };
 
 const LinkButton = ({
   href,
-  imgSrc = "/svgs/link-solid.svg",
+  imgSrc = "/svgs/link-white.svg",
+  iconBefore,
+  newTab,
   children,
 }: LinkButtonProps) => {
   const [showIcon, setShowIcon] = useState<boolean>(false);
@@ -41,12 +45,25 @@ const LinkButton = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
+      {iconBefore && (
+        <animated.div style={{ paddingRight: "1rem", ...slideInIcon }}>
+          <Image src={imgSrc} height={20} width={20} />
+        </animated.div>
+      )}
       <div className={styles.link}>
-        <Link href={href}>{children}</Link>
+        {newTab ? (
+          <a href={href} target="_blank">
+            {children}
+          </a>
+        ) : (
+          <Link href={href}>{children}</Link>
+        )}
       </div>
-      <animated.div style={{ paddingLeft: "1rem", ...slideInIcon }}>
-        <Image src={imgSrc} height={20} width={20} />
-      </animated.div>
+      {!iconBefore && (
+        <animated.div style={{ paddingLeft: "1rem", ...slideInIcon }}>
+          <Image src={imgSrc} height={20} width={20} />
+        </animated.div>
+      )}
     </div>
   );
 };

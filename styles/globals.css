@@ -10,13 +10,22 @@
   src: url("/webFonts/Oceanwide/regular.woff2") format("woff2"),
     url("/webFonts/Oceanwide/regular.woff") format("woff");
 }
+@font-face {
+  font-family: "Monograf-Regular";
+  src: url("/webFonts/Monograf/regular.woff2") format("woff2"),
+    url("/webFonts/Monograf/regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Monograf-Bold";
+  src: url("/webFonts/Monograf/bold.woff2") format("woff2"),
+    url("/webFonts/Monograf/bold.woff") format("woff");
+}
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Space Mono";
-  overflow: hidden;
+  font-family: "Monograf-Regular";
 }
 
 a {

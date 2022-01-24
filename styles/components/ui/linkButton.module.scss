@@ -1,7 +1,7 @@
 @use "../../vars.scss";
 
 .container {
-  font-family: vars.$spacemono;
+  font-family: vars.$monograf-regular;
   border-radius: 0rem;
   padding: 0.5rem 0rem;
   position: relative;
@@ -10,7 +10,9 @@
   text-align: left;
   white-space: nowrap;
   width: fit-content;
+  margin-top: 1rem;
+  cursor: pointer;
   .link {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
   }
 }

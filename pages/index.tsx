@@ -50,11 +50,15 @@ const Home: NextPage = () => {
           >
             <div className={styles.intro}>
               <h1>Hello!</h1>
-              <Image src="/svgs/h-zigzag-line.svg" width={1000} height={10} />
+              <Image
+                src="/svgs/h-zigzag-line-white.svg"
+                width={1000}
+                height={10}
+              />
               <h2>I'm James, welcome to my portfolio.</h2>
               <GrowOnHover style={{ margin: "auto" }} onClick={() => scroll(1)}>
                 <Image
-                  src="/svgs/arrow-down-solid.svg"
+                  src="/svgs/arrow-down-white.svg"
                   height={"100%"}
                   width={"100%"}
                 />
@@ -64,7 +68,11 @@ const Home: NextPage = () => {
           <ParallaxLayer offset={1.1} speed={2.5} style={{}}>
             <div className={styles.intro} ref={ref}>
               <h1>What's good</h1>
-              <Image src="/svgs/h-zigzag-line.svg" width={1000} height={10} />
+              <Image
+                src="/svgs/h-zigzag-line-white.svg"
+                width={1000}
+                height={10}
+              />
               <h2>
                 I'm a
                 <ChangingWords wordGroups={wordGroups} />
@@ -85,14 +93,43 @@ const Home: NextPage = () => {
               </div>
               <div
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1.5rem",
                   marginTop: "3rem",
                 }}
               >
-                <LinkButton href="/aboutme">about me</LinkButton>
-                <LinkButton href="/projects">my projects</LinkButton>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <LinkButton href="/aboutme">about me</LinkButton>
+                  <LinkButton
+                    iconBefore
+                    newTab
+                    imgSrc={"/svgs/external-link-alt-white.svg"}
+                    href="https://www.linkedin.com/in/james-volpe/"
+                  >
+                    <Image
+                      src={"/svgs/linkedin-icon.svg"}
+                      width={25}
+                      height={25}
+                    />
+                  </LinkButton>
+                </div>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <LinkButton href="/projects">my projects</LinkButton>
+                  <LinkButton
+                    iconBefore
+                    newTab
+                    imgSrc={"/svgs/external-link-alt-white.svg"}
+                    href="https://github.com/Volpestyle"
+                  >
+                    <Image
+                      src={"/svgs/github-icon.svg"}
+                      width={25}
+                      height={25}
+                    />
+                  </LinkButton>
+                </div>
                 <LinkButton href="/contact">things i've learned</LinkButton>
               </div>
             </div>
