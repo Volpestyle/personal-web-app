@@ -1,0 +1,35 @@
+@use "../vars.scss";
+
+.container {
+  border-width: 3px;
+  border-color: white;
+  border-style: solid;
+  color: white;
+  margin: 2rem 2rem;
+  padding: 0.5rem 1rem;
+  h2 {
+    font-family: vars.$monograf-bold;
+    margin: 0.3rem 0rem;
+  }
+  h4 {
+    background-color: white;
+    border-radius: 40px;
+    padding: 0.1rem 0.5rem;
+    color: black;
+    width: fit-content;
+    margin: 0 0;
+    font-family: vars.$spacemono;
+  }
+}
+.checkItOutLink {
+  justify-content: center;
+  font-family: vars.$spacemono;
+  display: flex;
+  cursor: pointer;
+  align-content: center;
+  gap: 10px;
+  color: rgb(24, 170, 255);
+}
+.checkItOutLink:hover {
+  text-decoration: underline;
+}

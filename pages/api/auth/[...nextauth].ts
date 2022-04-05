@@ -1,10 +1,8 @@
 import NextAuth, { Session, User } from "next-auth";
-import { getToken, JWT } from "next-auth/jwt";
 import CredentialsProvider, {
   CredentialInput,
   CredentialsConfig,
 } from "next-auth/providers/credentials";
-import { redirect } from "next/dist/server/api-utils";
 import { IdentityProvider } from "saml2-js";
 import samlProviders from "../../../utils/samlProviders";
 

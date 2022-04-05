@@ -26,6 +26,12 @@
   }
 }
 
+.introBg {
+  @extend .intro;
+  background-color: rgba(0, 0, 0, 0.788);
+  border-radius: 10rem;
+}
+
 /* .main {
   min-height: 100vh;
   padding: 4rem 0;

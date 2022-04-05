@@ -1,5 +1,6 @@
 import { IButton } from "types/ui";
 import styles from "styles/components/ui/button.module.scss";
+import { createRef, useEffect } from "react";
 
 export const Button = ({ children, style, onClick, href, newTab }: IButton) => {
   return (

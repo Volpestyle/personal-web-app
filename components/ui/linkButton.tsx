@@ -9,6 +9,7 @@ type LinkButtonProps = {
   onClick?: () => void;
   imgSrc?: string;
   iconBefore?: boolean;
+  iconStyle?: any;
   newTab?: boolean;
   children: ReactNode;
 };
@@ -18,6 +19,7 @@ const LinkButton = ({
   onClick,
   imgSrc = "/svgs/link-white.svg",
   iconBefore,
+  iconStyle,
   newTab,
   children,
 }: LinkButtonProps) => {
@@ -63,7 +65,9 @@ const LinkButton = ({
         )}
       </div>
       {!iconBefore && (
-        <animated.div style={{ paddingLeft: "1rem", ...slideInIcon }}>
+        <animated.div
+          style={{ paddingLeft: "1rem", ...slideInIcon, ...iconStyle }}
+        >
           <Image src={imgSrc} height={20} width={20} />
         </animated.div>
       )}

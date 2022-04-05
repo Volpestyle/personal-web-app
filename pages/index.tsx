@@ -11,16 +11,18 @@ import GrowOnHover from "components/ui/growOnHover";
 import { InView } from "react-intersection-observer";
 import { createRef } from "react";
 import LinkButton from "components/ui/linkButton";
+import { useEffect } from "react";
+import { myOccupations } from "utils/constants";
 
 const Home: NextPage = () => {
-  const wordGroups = [
-    ["software engineer"],
-    ["web developer"],
-    ["front-end engineer"],
-    ["React developer"],
-    ["designer"],
-    ["musician :D"],
-  ];
+  // Remove scrollbar
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "scroll";
+    };
+  }, []);
+
   const parallax = useRef<IParallax>(null);
   const scroll = (to: number) => {
     if (parallax.current) {
@@ -48,8 +50,8 @@ const Home: NextPage = () => {
               alignItems: "center",
             }}
           >
-            <div className={styles.intro}>
-              <h1>Hello!</h1>
+            <div className={styles.introBg}>
+              <h1>Hi</h1>
               <Image
                 src="/svgs/h-zigzag-line-white.svg"
                 width={1000}
@@ -75,7 +77,7 @@ const Home: NextPage = () => {
               />
               <h2>
                 I'm a
-                <ChangingWords wordGroups={wordGroups} />
+                <ChangingWords wordGroups={myOccupations} />
               </h2>
               {/* <span className={styles.small}>
                 (basically I like to make things)
@@ -83,12 +85,12 @@ const Home: NextPage = () => {
               <div className={styles.body}>
                 <p>
                   Ever since I started using computers, I found myself
-                  interested in writing code, inspired by the endless creative
+                  interested in writing code, inspired by the endless
                   possibilities.
                 </p>
                 <p>
-                  Here you'll find some of my creations and projects I'm most
-                  proud of, as well as my resumé and more info about me!
+                  Here you'll find some of my work and projects I'm most proud
+                  of :)
                 </p>
               </div>
               <div

@@ -1,10 +1,7 @@
 import type { AppProps } from "next/app";
-import { config as fontAwesomeConfig } from "@fortawesome/fontawesome-svg-core";
 import { ToastProvider } from "react-toast-notifications";
 import { NextPage } from "next";
 import { SessionProvider } from "next-auth/react";
-fontAwesomeConfig.autoAddCss = false;
-import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../styles/globals.css";
 
 type NextPageWithLayout = NextPage & {

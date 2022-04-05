@@ -18,6 +18,9 @@ module.exports = {
   future: {
     webpack5: true,
   },
+  images: {
+    domains: ["raw.githubusercontent.com"],
+  },
   webpack: (config) => {
     // load worker files as a urls with `file-loader`
     config.module.rules.unshift({
