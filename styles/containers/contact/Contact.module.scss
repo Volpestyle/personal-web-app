@@ -18,3 +18,27 @@
   margin-top: -2rem;
   z-index: -1;
 }
+
+.form {
+  margin: 6rem auto;
+  width: 30%;
+  text-align: left;
+  input,
+  textarea {
+    display: block;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: vars.$spacemono;
+    color: #2c3e50;
+    font-size: 13px;
+  }
+  .inputLabel {
+    display: block;
+    margin-top: 1rem;
+    color: white;
+  }
+}

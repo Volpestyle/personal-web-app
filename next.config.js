@@ -14,6 +14,7 @@ module.exports = {
     SP_CERT: process.env.SP_CERT,
     SSO_CERT: process.env.SSO_CERT,
     TEMP_CREDENTIALS_ROLE_ARN: process.env.TEMP_CREDENTIALS_ROLE_ARN,
+    EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
   },
   future: {
     webpack5: true,

@@ -3,7 +3,6 @@ export const myOccupations = [
   ["software engineer"],
   ["web developer"],
   ["front-end engineer"],
-  ["React developer"],
-  ["designer"],
+  ["ui / graphic designer"],
   ["musician :D"],
 ];

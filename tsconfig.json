@@ -20,7 +20,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/pdf-viewer/pdf-worker.js"
+    "components/pdf-viewer/pdf-worker.js",
+    "components/ui/markdownImage.js"
   ],
   "exclude": ["node_modules"]
 }

@@ -45,6 +45,7 @@ const Home: NextPage = () => {
             offset={0}
             speed={2.5}
             style={{
+              marginTop: "-15rem",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -84,13 +85,14 @@ const Home: NextPage = () => {
               </span> */}
               <div className={styles.body}>
                 <p>
-                  Ever since I started using computers, I found myself
-                  interested in writing code, inspired by the endless
-                  possibilities.
+                  Over the years I've tried my hand at many things, from graphic
+                  design to front-end engineering. But ever since I started
+                  using computers as a young kid, I found myself interested in
+                  writing code, inspired by the endless possibilities.
                 </p>
                 <p>
-                  Here you'll find some of my work and projects I'm most proud
-                  of :)
+                  Here you'll find some of the products of my creative efforts,
+                  including my work and projects I'm most proud of :)
                 </p>
               </div>
               <div

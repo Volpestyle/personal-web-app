@@ -1,10 +1,11 @@
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax";
 import PublicLayout from "components/layouts/public.layout";
 import { RepoItem } from "components/repoItem";
 import Decorations from "containers/projects/decorations";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import LinkButton from "components/ui/linkButton";
+import Error from "components/ui/error";
+// import LinkButton from "components/ui/linkButton";
 import styles from "styles/containers/projects/Projects.module.scss";
 
 const dontInclude = [
@@ -27,10 +28,12 @@ const Project = () => {
       .then((res) => res.json())
       .then((data) => {
         const filtered = data.filter(
-          (item) => !dontInclude.includes(item.full_name)
+          (item: any) => !dontInclude.includes(item.full_name)
         );
-        const faves = filtered.filter((repo) => repo.stargazers_count > 0);
-        const rest = filtered.filter((repo) => repo.stargazers_count === 0);
+        const faves = filtered.filter((repo: any) => repo.stargazers_count > 0);
+        const rest = filtered.filter(
+          (repo: any) => repo.stargazers_count === 0
+        );
         setRepos(faves.concat(rest));
       })
       .catch((e) => setError(e));
@@ -67,7 +70,7 @@ const Project = () => {
             speed={2.5}
             className={styles.containerPage1}
           >
-            <h1>My repos</h1>
+            <h1>My code</h1>
             <div style={{ marginTop: "-1.1rem", textAlign: "center" }}>
               <Image
                 src="/svgs/h-zigzag-line-white.svg"
@@ -76,7 +79,8 @@ const Project = () => {
               />
             </div>
             <div className={styles.reposContainer}>
-              {!repos ? (
+              <Error error={error} />
+              {!repos.length && !error ? (
                 <div className={styles.imgWrapper}>
                   <Image
                     src={"/svgs/loading-ring-white.svg"}
@@ -100,7 +104,7 @@ const Project = () => {
                 marginLeft: "3rem",
               }}
             >
-              <LinkButton
+              {/* <LinkButton
                 imgSrc={"/svgs/arrow-down-white.svg"}
                 onClick={() => handleScroll("designs")}
                 iconStyle={{
@@ -108,7 +112,7 @@ const Project = () => {
                 }}
               >
                 my designs
-              </LinkButton>
+              </LinkButton> */}
               {/* <LinkButton imgSrc={"/svgs/arrow-down-white.svg"} href="/aboutme">
               courses
             </LinkButton> */}
@@ -119,7 +123,7 @@ const Project = () => {
             speed={2.5}
             className={styles.containerPage1}
           >
-            <h1>My designs</h1>
+            <h1>(more coming soon)</h1>
           </ParallaxLayer>
         </Parallax>
       </div>

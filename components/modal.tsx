@@ -34,7 +34,7 @@ export const Modal = ({
   );
   const [readMeTxt, setReadMeTxt] = useState<{
     data?: string;
-    imgMetadata?: any[];
+    imgMetadata?: any;
   }>({});
   const [error, setError] = useState<Error>();
   const readMePath = `${rootPath}/README.md`;
@@ -54,7 +54,7 @@ export const Modal = ({
         .then(async (data) => {
           // get all images in md by regex
           const images = data.matchAll(/!\[.*\]\(.*\)/g);
-          const names = [];
+          const names: string[] = [];
           const imgMetadata = [...images].map(async (img) => {
             const name = img[0].slice(
               img[0].indexOf("(") + 1,
@@ -66,7 +66,7 @@ export const Modal = ({
           });
           // once we have metadata, set data
           Promise.all(imgMetadata).then((res) => {
-            const mapping = {};
+            const mapping: any = {};
             names.forEach((name, i) => {
               mapping[name] = res[i];
             });
@@ -131,23 +131,25 @@ export const Modal = ({
             <p>Uh oh, no readme.md, Oh well!</p>
           ) : (
             <ReactMarkdown
-              children={readMeTxt.data}
+              children={readMeTxt.data || ""}
               components={{
-                img: ({ src }) => (
-                  <img
-                    src={`${rootPath}/${src}`}
-                    style={{
-                      width: `${readMeTxt.imgMetadata[src].width}px`,
-                      maxWidth: "100%",
-                      height: `${
-                        (readMeTxt.imgMetadata[src].width /
-                          readMeTxt.imgMetadata[src].height) *
-                        100
-                      }%`,
-                      src: src,
-                    }}
-                  />
-                ),
+                img: ({ src }: { src?: string }) =>
+                  !!src ? (
+                    <img
+                      src={`${rootPath}/${src}`}
+                      style={{
+                        width: `${readMeTxt.imgMetadata?.[src]?.width}px`,
+                        maxWidth: "100%",
+                        height: `${
+                          (readMeTxt.imgMetadata[src].width /
+                            readMeTxt.imgMetadata[src].height) *
+                          100
+                        }%`,
+                      }}
+                    />
+                  ) : (
+                    <></>
+                  ),
               }}
             />
           )}
