@@ -11,7 +11,7 @@ export interface IButton {
 export const Button = ({ children, style, onClick, href, newTab }: IButton) => {
   return (
     <div className={styles.container}>
-      <a href={href} target={newTab ? "_blank" : "_self"}>
+      <a href={href} target={newTab ? "_blank" : "_self"} rel="noreferrer">
         <button onClick={onClick} style={style}>
           {children}
         </button>

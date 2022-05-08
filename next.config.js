@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   reactStrictMode: true,
   env: {
     SSO_ENTRY_POINT: process.env.SSO_ENTRY_POINT,
