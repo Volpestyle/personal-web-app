@@ -57,7 +57,7 @@ const LinkButton = ({
       )}
       <div className={styles.link}>
         {newTab || !href ? (
-          <a href={href} target="_blank">
+          <a href={href} target="_blank" rel="noreferrer">
             {children}
           </a>
         ) : (
