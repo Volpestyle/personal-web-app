@@ -41,6 +41,11 @@ module.exports = {
       ],
     });
 
+    config.module.rules.unshift({
+      test: /\.node$/,
+      loader: "node-loader",
+    });
+
     return config;
   },
 };
