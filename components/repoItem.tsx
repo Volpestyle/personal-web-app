@@ -88,6 +88,7 @@ export const RepoItem = ({
               src="/svgs/external-link-alt-white.svg"
               width={20}
               height={20}
+              alt={""}
             />
           </div>
         }
@@ -102,7 +103,12 @@ export const RepoItem = ({
         <div style={{ display: "flex", gap: ".5rem" }}>
           <h2>{name}</h2>
           {isFavorited && (
-            <Image src={"/svgs/star-solid-yellow.svg"} width={20} height={20} />
+            <Image
+              src={"/svgs/star-solid-yellow.svg"}
+              width={20}
+              height={20}
+              alt={""}
+            />
           )}
         </div>
         {language && <h4>{language}</h4>}

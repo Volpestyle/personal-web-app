@@ -110,7 +110,12 @@ export const Modal = ({
           onClick={onDismiss}
           style={{ cursor: "pointer", padding: "1rem", width: "fit-content" }}
         >
-          <Image src="/svgs/x-solid.svg" width={30} height={30}></Image>
+          <Image
+            src="/svgs/x-solid.svg"
+            width={30}
+            height={30}
+            alt={""}
+          ></Image>
         </div>
         {/*<h1>{headerTxt}</h1>*/}
         {/*<h3 className={styles.desc}>{description}</h3>*/}
@@ -127,6 +132,7 @@ export const Modal = ({
                 src={"/svgs/loading-ring-white.svg"}
                 width={150}
                 height={150}
+                alt={""}
               />
             </div>
           ) : error ? (

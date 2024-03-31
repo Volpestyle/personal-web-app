@@ -5,7 +5,6 @@ import styles from "styles/containers/about/AboutMe.module.scss";
 import Image from "next/image";
 import LinkButton from "components/ui/linkButton";
 import { useRouter } from "next/router";
-import { PDFViewer } from "components/pdf-viewer/pdf-viewer";
 import { Button } from "components/ui/button";
 import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax";
 import Decorations from "containers/about/decorations";
@@ -60,6 +59,7 @@ const AboutMe: NextPage = () => {
                   src="/svgs/h-zigzag-line-white.svg"
                   width={1000}
                   height={10}
+                  alt={""}
                 />
               </div>
               <h2>Let me introduce myself...</h2>
@@ -91,6 +91,7 @@ const AboutMe: NextPage = () => {
                     transform: "rotate(180deg) translateY(.5rem)",
                     paddingRight: "1rem",
                   }}
+                  underline={true}
                 >
                   my resumé
                 </LinkButton>
@@ -104,7 +105,12 @@ const AboutMe: NextPage = () => {
         <ParallaxLayer offset={1} speed={-4} style={{ zIndex: 100 }}>
           <div className={styles.resumeWrapper}>
             <div className={styles.resumeContainer}>
-              <PDFViewer pdfSrc={RESUME_SRC} />
+              <iframe
+                src={RESUME_SRC}
+                frameBorder="0"
+                width="75%"
+                height="700px"
+              />
               <Button
                 style={{ color: "white", width: "15rem" }}
                 href={RESUME_SRC}
@@ -116,6 +122,7 @@ const AboutMe: NextPage = () => {
                     src={"/svgs/download-white.svg"}
                     width={20}
                     height={20}
+                    alt={""}
                   />
                 </span>
               </Button>

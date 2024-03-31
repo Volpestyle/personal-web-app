@@ -10,9 +10,7 @@ const Nav = () => {
       <nav>
         <div className={styles.navLogo}>
           <Link href={"/"}>
-            <a>
-              <Image src="/svgs/nav-logo.svg" height={50} width={50} />
-            </a>
+            <Image src="/svgs/nav-logo.svg" height={50} width={50} alt={""} />
           </Link>
         </div>
         <ul>

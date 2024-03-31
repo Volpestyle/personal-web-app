@@ -8,7 +8,6 @@ import { useRef } from "react";
 import Decorations from "containers/home/decorations";
 import ChangingWords from "components/changingWords";
 import GrowOnHover from "components/ui/growOnHover";
-import { InView } from "react-intersection-observer";
 import { createRef } from "react";
 import LinkButton from "components/ui/linkButton";
 import { useEffect } from "react";
@@ -57,14 +56,11 @@ const Home: NextPage = () => {
                 src="/svgs/h-zigzag-line-white.svg"
                 width={1000}
                 height={10}
+                alt={""}
               />
               <h2>I'm James, welcome to my portfolio.</h2>
               <GrowOnHover style={{ margin: "auto" }} onClick={() => scroll(1)}>
-                <Image
-                  src="/svgs/arrow-down-white.svg"
-                  height={"100%"}
-                  width={"100%"}
-                />
+                <Image src="/svgs/arrow-down-white.svg" fill={true} alt={""} />
               </GrowOnHover>
             </div>
           </ParallaxLayer>
@@ -75,6 +71,8 @@ const Home: NextPage = () => {
                 src="/svgs/h-zigzag-line-white.svg"
                 width={1000}
                 height={10}
+                alt={""}
+                className={styles.offsetMargin}
               />
               <h2>
                 I'm a
@@ -103,7 +101,9 @@ const Home: NextPage = () => {
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <LinkButton href="/aboutme">about me</LinkButton>
+                  <LinkButton underline={true} href="/aboutme">
+                    about me
+                  </LinkButton>
                   <LinkButton
                     iconBefore
                     newTab
@@ -114,13 +114,16 @@ const Home: NextPage = () => {
                       src={"/svgs/linkedin-icon.svg"}
                       width={25}
                       height={25}
+                      alt={""}
                     />
                   </LinkButton>
                 </div>
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <LinkButton href="/projects">my projects</LinkButton>
+                  <LinkButton underline={true} href="/projects">
+                    my projects
+                  </LinkButton>
                   <LinkButton
                     iconBefore
                     newTab
@@ -131,10 +134,13 @@ const Home: NextPage = () => {
                       src={"/svgs/github-icon.svg"}
                       width={25}
                       height={25}
+                      alt={""}
                     />
                   </LinkButton>
                 </div>
-                <LinkButton href="/contact">contact me</LinkButton>
+                <LinkButton underline={true} href="/contact">
+                  contact me
+                </LinkButton>
               </div>
             </div>
           </ParallaxLayer>

@@ -4,7 +4,6 @@ import { LayoutPage } from "../../types/layoutPage";
 import { useSession } from "next-auth/react";
 import CMSLayout from "../../components/layouts/cms.layout";
 import router from "next/router";
-import { useToasts } from "react-toast-notifications";
 import { useCMSContext } from "../../components/providers/cmsProvider";
 import { SSOUser } from "../../utils/samlProviders";
 

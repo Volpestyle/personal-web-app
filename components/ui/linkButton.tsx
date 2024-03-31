@@ -10,6 +10,7 @@ type LinkButtonProps = {
   imgSrc?: string;
   iconBefore?: boolean;
   iconStyle?: any;
+  underline?: boolean;
   newTab?: boolean;
   children: ReactNode;
 };
@@ -20,6 +21,7 @@ const LinkButton = ({
   imgSrc = "/svgs/link-white.svg",
   iconBefore,
   iconStyle,
+  underline,
   newTab,
   children,
 }: LinkButtonProps) => {
@@ -52,10 +54,10 @@ const LinkButton = ({
     >
       {iconBefore && (
         <animated.div style={{ paddingRight: "1rem", ...slideInIcon }}>
-          <Image src={imgSrc} height={20} width={20} />
+          <Image src={imgSrc} height={20} width={20} alt={""} />
         </animated.div>
       )}
-      <div className={styles.link}>
+      <div className={underline ? styles.link : undefined}>
         {newTab || !href ? (
           <a href={href} target="_blank" rel="noreferrer">
             {children}
@@ -68,7 +70,7 @@ const LinkButton = ({
         <animated.div
           style={{ paddingLeft: "1rem", ...slideInIcon, ...iconStyle }}
         >
-          <Image src={imgSrc} height={20} width={20} />
+          <Image src={imgSrc} height={20} width={20} alt={""} />
         </animated.div>
       )}
     </div>

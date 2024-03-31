@@ -6,11 +6,8 @@ import TextArea from "components/ui/textArea";
 import Image from "next/image";
 import { ChangeEvent, MouseEvent, useState } from "react";
 import styles from "styles/containers/contact/Contact.module.scss";
-import { useToasts } from "react-toast-notifications";
 
 const Contact = () => {
-  const { addToast } = useToasts();
-
   const [nameVal, setNameVal] = useState<string>("");
   const [emailVal, setEmailVal] = useState<string>("");
   const [bodyVal, setBodyVal] = useState<string>("");
@@ -19,10 +16,10 @@ const Contact = () => {
   const handleSendEmail = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!nameVal || !emailVal || !bodyVal) {
-      addToast(`Please fill out all fields`, {
+      /* addToast(`Please fill out all fields`, {
         appearance: "error",
         autoDismiss: true,
-      });
+      });*/
       return;
     }
     setLoading(true);
@@ -35,16 +32,16 @@ const Contact = () => {
       .then((res) => {
         setLoading(false);
         if (res.status === 200) {
-          addToast(`Message sent!`, {
+          /*addToast(`Message sent!`, {
             appearance: "success",
             autoDismiss: true,
-          });
+          });*/
           // console.log(res.data);
         } else {
-          addToast(`Failed to send message! (check console log)`, {
+          /* addToast(`Failed to send message! (check console log)`, {
             appearance: "error",
             autoDismiss: true,
-          });
+          });*/
         }
       });
   };
@@ -55,9 +52,9 @@ const Contact = () => {
         <div className={styles.bgWrap}>
           <Image
             src={"/images/spinning-globe.gif"}
-            layout="fill"
-            objectFit="cover"
+            fill={true}
             quality={100}
+            alt={""}
           />
         </div>
         <div className={styles.body}>
@@ -67,6 +64,7 @@ const Contact = () => {
               src="/svgs/h-zigzag-line-white.svg"
               width={1000}
               height={10}
+              alt={""}
             />
             <form className={styles.form}>
               <div className={styles.inputLabel}>
@@ -101,6 +99,7 @@ const Contact = () => {
                   src={"/svgs/loading-ring-white.svg"}
                   width={100}
                   height={100}
+                  alt={""}
                 />
               ) : (
                 <Button

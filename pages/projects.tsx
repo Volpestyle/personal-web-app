@@ -19,8 +19,8 @@ const dontInclude = [
 ];
 const favorites = [201538982];
 const Project = () => {
-  const [repos, setRepos] = useState<any[]>([]);
-  const [error, setError] = useState<any>([]);
+  const [repos, setRepos] = useState<any[]>();
+  const [error, setError] = useState<any>();
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -76,20 +76,22 @@ const Project = () => {
                 src="/svgs/h-zigzag-line-white.svg"
                 width={1000}
                 height={10}
+                alt={""}
               />
             </div>
             <div className={styles.reposContainer}>
               <Error error={error} />
-              {!repos.length && !error ? (
+              {!repos && !error ? (
                 <div className={styles.imgWrapper}>
                   <Image
                     src={"/svgs/loading-ring-white.svg"}
                     width={150}
                     height={150}
+                    alt={""}
                   />
                 </div>
               ) : (
-                repos.map((repo) => (
+                repos?.map((repo) => (
                   <RepoItem isFavorited={repo.stargazers_count > 0} {...repo} />
                 ))
               )}

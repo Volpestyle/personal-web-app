@@ -3,18 +3,16 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useToasts } from "react-toast-notifications";
 import styles from "styles/containers/cms/Login.module.scss";
 
 const Home: NextPage = () => {
   const router = useRouter();
-  const { addToast } = useToasts();
   useEffect(() => {
     if (router.query.error) {
-      addToast(`Unauthorized`, {
+      /* addToast(`Unauthorized`, {
         appearance: "info",
         autoDismiss: true,
-      });
+      });*/
     }
   }, [router.query]);
 

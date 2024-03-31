@@ -17,7 +17,7 @@ const GrowOnHover = ({ onClick, style, children }: GrowOnHoverProps) => {
     },
     to: {
       height: toggle ? "30px" : "15px",
-      width: toggle ? "30" : "15px",
+      width: toggle ? "30px" : "15px",
     },
     config: { mass: 1, tension: 180, friction: 12 },
   });
@@ -32,7 +32,12 @@ const GrowOnHover = ({ onClick, style, children }: GrowOnHoverProps) => {
 
   return (
     <animated.div
-      style={{ cursor: "pointer", ...style, ...animatedStyles }}
+      style={{
+        cursor: "pointer",
+        position: "relative",
+        ...style,
+        ...animatedStyles,
+      }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >

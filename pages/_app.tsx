@@ -1,5 +1,4 @@
 import type { AppProps } from "next/app";
-import { ToastProvider } from "react-toast-notifications";
 import { NextPage } from "next";
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
@@ -24,7 +23,7 @@ function MyApp({
   const getLayout = (page: any) => page;
   return (
     <SessionProvider session={pageProps.session}>
-      <ToastProvider>{getLayout(<Component {...pageProps} />)}</ToastProvider>
+      {getLayout(<Component {...pageProps} />)}
     </SessionProvider>
   );
 }
