@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "target": "es2021",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -14,7 +13,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "target": "es6",
+    "downlevelIteration": true
   },
   "include": [
     "next-env.d.ts",
