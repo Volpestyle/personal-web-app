@@ -1,4 +1,4 @@
-export const RESUME_SRC = "/resume/spring-2022.pdf";
+export const RESUME_SRC = "/resume/spring-2024.pdf";
 export const myOccupations = [
   ["software engineer"],
   ["web developer"],

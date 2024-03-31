@@ -105,7 +105,7 @@ export const RepoItem = ({
             <Image src={"/svgs/star-solid-yellow.svg"} width={20} height={20} />
           )}
         </div>
-        <h4>{language}</h4>
+        {language && <h4>{language}</h4>}
       </animated.div>
     </>
   );

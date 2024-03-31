@@ -3,7 +3,7 @@ import { ReactNode, useEffect, useState } from "react";
 import styles from "styles/components/ui/Modal.module.scss";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
-import { getMeta } from "utils/basic";
+import { getMeta } from "../utils/basic";
 
 interface IModal {
   isVisible: boolean;
@@ -113,10 +113,12 @@ export const Modal = ({
           <Image src="/svgs/x-solid.svg" width={30} height={30}></Image>
         </div>
         {/*<h1>{headerTxt}</h1>*/}
-        <h3 className={styles.desc}>{description}</h3>
-        <h4 className={styles.lang}>
-          Language: <span className={styles.whiteCircle}>{language}</span>
-        </h4>
+        {/*<h3 className={styles.desc}>{description}</h3>*/}
+        {language && (
+          <h4 className={styles.lang}>
+            Language: <span className={styles.whiteCircle}>{language}</span>
+          </h4>
+        )}
         {link}
         <div className={styles.contentContainer}>
           {!readMeTxt.data && !error ? (

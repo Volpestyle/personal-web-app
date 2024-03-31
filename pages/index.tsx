@@ -134,7 +134,7 @@ const Home: NextPage = () => {
                     />
                   </LinkButton>
                 </div>
-                <LinkButton href="/contact">things i've learned</LinkButton>
+                <LinkButton href="/contact">contact me</LinkButton>
               </div>
             </div>
           </ParallaxLayer>

@@ -19,9 +19,6 @@ module.exports = {
     TEMP_CREDENTIALS_ROLE_ARN: process.env.TEMP_CREDENTIALS_ROLE_ARN,
     EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
   },
-  future: {
-    webpack5: true,
-  },
   images: {
     domains: ["raw.githubusercontent.com"],
   },
