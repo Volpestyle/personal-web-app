@@ -1,7 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 # jcvolpe.me
 - A portfolio website. 
-- In-progress: A basic content mangement system so I can easily update with my latest work.
+- **In-progress**: A basic content mangement system I can use to easily update with my latest work.
 ## Overview
 #### Frameworks
 - [Next.js](https://nextjs.org/) (serverless React, SSR, SSG, etc.) 
