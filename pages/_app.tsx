@@ -1,8 +1,10 @@
 import type { AppProps } from "next/app";
 import { ToastProvider } from "react-toast-notifications";
 import { NextPage } from "next";
+import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
+import { LayoutPage } from "types/layoutPage";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
@@ -14,11 +16,14 @@ type AppPropsWithLayout = AppProps & {
 
 function MyApp({
   Component,
-  pageProps: { session, ...pageProps },
-}: AppPropsWithLayout) {
-  const getLayout = Component.getLayout || ((page: any) => page);
+  pageProps,
+}: AppProps<{
+  getLayout: LayoutPage;
+  session: Session;
+}>) {
+  const getLayout = (page: any) => page;
   return (
-    <SessionProvider session={session}>
+    <SessionProvider session={pageProps.session}>
       <ToastProvider>{getLayout(<Component {...pageProps} />)}</ToastProvider>
     </SessionProvider>
   );
