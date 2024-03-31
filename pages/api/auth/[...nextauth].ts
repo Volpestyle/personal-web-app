@@ -57,12 +57,12 @@ export default NextAuth({
     signIn: "/login",
   },
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) return user;
+    async jwt({ token, account }) {
+      if (account) token.accessToken = account.access_token;
       return token;
     },
     async session({ session, token }: { session: Session; token: any }) {
-      if (token.user) session.user = token.user;
+      if (token.user) session.user = token.accessToken;
       return session;
     },
     async redirect({ url, baseUrl }) {
