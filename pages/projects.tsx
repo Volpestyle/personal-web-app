@@ -4,7 +4,7 @@ import { RepoItem } from "components/repoItem";
 import Decorations from "containers/projects/decorations";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import Error from "components/ui/error";
+import CustomError from "components/ui/error";
 // import LinkButton from "components/ui/linkButton";
 import styles from "styles/containers/projects/Projects.module.scss";
 
@@ -80,7 +80,7 @@ const Project = () => {
               />
             </div>
             <div className={styles.reposContainer}>
-              <Error error={error} />
+              <CustomError error={error} />
               {!repos && !error ? (
                 <div className={styles.imgWrapper}>
                   <Image
