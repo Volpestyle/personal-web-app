@@ -16,6 +16,11 @@ const dontInclude = [
   "Volpestyle/Code-Foo-2019",
   "Volpestyle/321PA2",
   "Volpestyle/COMS474-HW1",
+  "Volpestyle/Adaptive-List",
+  "Volpestyle/coding-problems",
+  "Volpestyle/Chat-Application",
+  "Volpestyle/Magic-Tetris",
+  "Volpestyle/HTMLCanvas-Snake",
 ];
 const favorites = [201538982];
 const Project = () => {
