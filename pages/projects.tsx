@@ -21,6 +21,8 @@ const dontInclude = [
   "Volpestyle/Chat-Application",
   "Volpestyle/Magic-Tetris",
   "Volpestyle/HTMLCanvas-Snake",
+  "Volpestyle/Entry-Tree",
+  "Volpestyle/Tic-Tac-Toe",
 ];
 const favorites = [201538982];
 const Project = () => {
