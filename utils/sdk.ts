@@ -8,6 +8,12 @@ import {
   S3Client,
 } from "@aws-sdk/client-s3";
 import { Readable } from "stream";
+import {
+  SESClient,
+  SendEmailCommand,
+  SendEmailCommandInput,
+  SendEmailCommandOutput,
+} from "@aws-sdk/client-ses";
 
 const params = {
   RoleArn: process.env.TEMP_CREDENTIALS_ROLE_ARN,
@@ -26,6 +32,40 @@ export const s3Client = new S3Client({
     params,
   }),
 });
+
+export const sesClient = new SESClient({
+  region: "us-east-2",
+  credentials: fromTemporaryCredentials({
+    params,
+  }),
+});
+
+// Send email
+type sendEmailOptions = {};
+export const sendEmail = async (
+  htmlMessage: string
+): Promise<SendEmailCommandOutput> => {
+  const input: SendEmailCommandInput = {
+    Source: "volpestyle@gmail.com",
+    Destination: {
+      ToAddresses: ["volpestyle@gmail.com"],
+    },
+    Message: {
+      Subject: {
+        Data: "UTF-8",
+        Charset: "New message from jcvolpe.me",
+      },
+      Body: {
+        Html: {
+          Data: "UTF-8",
+          Charset: htmlMessage,
+        },
+      },
+    },
+  };
+  const command = new SendEmailCommand(input);
+  return await s3Client.send(command);
+};
 
 // Batch getObject
 type getS3FilesOptions = {

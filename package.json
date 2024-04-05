@@ -11,6 +11,7 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.540.0",
     "@aws-sdk/client-s3": "^3.540.0",
+    "@aws-sdk/client-ses": "^3.549.0",
     "@aws-sdk/credential-providers": "^3.540.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
@@ -39,6 +40,7 @@
     "react-query": "^3.39.3",
     "react-spring-scroll-to-hook": "^1.0.3",
     "react-tiny-popover": "^8.0.4",
+    "react-toastify": "^10.0.5",
     "saml2-js": "volpestyle/saml2-js",
     "sass": "^1.72.0"
   },

@@ -5,7 +5,9 @@ import Input from "components/ui/input";
 import TextArea from "components/ui/textArea";
 import Image from "next/image";
 import { ChangeEvent, MouseEvent, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import styles from "styles/containers/contact/Contact.module.scss";
+import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
   const [nameVal, setNameVal] = useState<string>("");
@@ -16,38 +18,33 @@ const Contact = () => {
   const handleSendEmail = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!nameVal || !emailVal || !bodyVal) {
-      /* addToast(`Please fill out all fields`, {
-        appearance: "error",
-        autoDismiss: true,
-      });*/
+      toast(`Please fill out all fields`, {
+        hideProgressBar: true,
+      });
       return;
     }
     setLoading(true);
     axios
-      .post("/contact", {
+      .post("/api/contact", {
         name: nameVal,
         email: emailVal,
         message: bodyVal,
       })
       .then((res) => {
         setLoading(false);
-        if (res.status === 200) {
-          /*addToast(`Message sent!`, {
-            appearance: "success",
-            autoDismiss: true,
-          });*/
-          // console.log(res.data);
-        } else {
-          /* addToast(`Failed to send message! (check console log)`, {
-            appearance: "error",
-            autoDismiss: true,
-          });*/
-        }
+        toast.success(`Message sent!`, {});
+        console.log(res);
+      })
+      .catch((err) => {
+        setLoading(false);
+        toast.error(`Failed to send message! (check console log)`, {});
+        console.log(err);
       });
   };
 
   return (
     <PublicLayout showFooter={false}>
+      <ToastContainer position="top-center" theme="dark" autoClose={5000} />
       <div className={styles.container}>
         <div className={styles.bgWrap}>
           <Image
