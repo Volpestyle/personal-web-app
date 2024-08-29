@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 # jcvolpe.me
-- (Live here)[https://main.dpy3iqfkgh8ej.amplifyapp.com/] (Hosted via AWS Amplify)
+- [Live here](https://main.dpy3iqfkgh8ej.amplifyapp.com/) (Hosted via AWS Amplify)
 - A portfolio website. 
 - **In-progress**: A basic content mangement system I can use to easily update with my latest work.
 ## Overview
